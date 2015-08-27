@@ -4,7 +4,13 @@ var teacher = require('./../controllers/teacher');
 
 module.exports = function(router){ //lahat ng nakalagay sa kaniya ay exportable functions, used to export functions
 	router.route('/students')
-		.get(student.find); //hahanapin sa student.js yung method na find
+		.get(student.find) //hahanapin sa student.js yung method na find
+		.post(student.insert); //create
+
+	router.route('/students/:id') //will enable the user to find student using their id
+		.get(student.findOne)
+		.put(student.update)
+		.delete(student.remove); //delete
 
 	router.route('/teachers')
 		.get(teacher.view);
